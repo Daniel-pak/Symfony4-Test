@@ -7,14 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\StockAnalysisType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Researcher\DataResearcher;
-
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class StockAnalysisController extends AbstractController
 {
     /**
      * @Route("/stock/analysis", name="stock_analysis")
      */
-    public function index(Request $request)
+    public function index(Request $request, SessionInterface $session)
     {
 
         $form = $this->createForm(StockAnalysisType::class);
@@ -22,13 +22,12 @@ class StockAnalysisController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $this->addFlash('warning', 'submitted!');
             $formData = $form->getData();
-            // dump($formData);
             $dataresearcher = new DataResearcher($formData['stock_name'], $formData['analysis_type']);
-            // dump($dataresearcher->generateQuery());
             $final_url = $dataresearcher->generateQuery();
-            $dataresearcher->getRequest($final_url);
+            $result = $dataresearcher->getRequest($final_url);
+            $session->set("result", $result);
+            // dump($session->get('result'));
         }
 
         return $this->render('stock_analysis/index.html.twig', [

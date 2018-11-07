@@ -18,6 +18,8 @@ class BaseApiController extends AbstractController
         $webscraper = new WebScraper($name);
         // $webscraper::setUrl($name);
         $webscraper::scrapeWebsite($name);
+        // $webscraper::setWebsiteHtml($whole_website);
+        // $webscraper::getWebsiteHtml();
 
         return $this->render('base_api/index.html.twig', [
             'controller_name' => 'BaseApiController',

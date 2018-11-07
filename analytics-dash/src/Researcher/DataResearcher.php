@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 #https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo
 
 class DataResearcher {
-    private $api_key = "&apikey=5B1MGCI79JP8KIOG";
+    private $api_key = "&apikey=6ULC31864Y6TKC9M";
     private $base_url = "https://www.alphavantage.co/query?function=";
     public $analytics_function;
     public $stock_symbol;
@@ -30,6 +30,9 @@ class DataResearcher {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($ch);
-        dump($result);
+        curl_close($ch);
+        $decoded_result = json_decode($result);
+        // dump($decoded_result);
+        return $decoded_result;
     }
 }
