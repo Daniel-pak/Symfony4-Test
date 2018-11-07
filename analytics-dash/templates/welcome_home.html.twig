@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+Hello! {{app.request.query.get('name') | default('Welcome to the analytics dashboard!:)') }}
+{% endblock %}

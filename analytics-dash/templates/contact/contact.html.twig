@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h3>Feel Free to Contact Us {{ some_random_variable | default('Fam')}}!</h3>
+    </div>
+
+    <div class="container">
+        {{ form_start(contact_form)}}
+        {{ form_widget(contact_form)}}
+        <div class="row">
+          <div class="col-sm-2">
+
+          </div>
+          <input type="submit" value="Hit me up!" class='col-sm-10 btn btn-success'>
+        </div>
+        {{ form_end(contact_form)}}
+    </div>
+
+{% endblock %}

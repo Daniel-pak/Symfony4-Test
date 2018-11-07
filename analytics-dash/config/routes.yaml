@@ -1,0 +1,12 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#don't typically render items this way - this is completely static - RIP
+# welcome_home:
+#     path: /
+#     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction #comes with Symfony/website-skeleton package
+#     defaults:
+#       template: welcome_home.html.twig
+
+#confirm the routing path using command line in linux: php bin/console debug:router
