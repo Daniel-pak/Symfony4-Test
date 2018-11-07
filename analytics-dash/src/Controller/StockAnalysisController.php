@@ -28,6 +28,7 @@ class StockAnalysisController extends AbstractController
             $result = $dataresearcher->getRequest($final_url);
             $session->set("result", $result);
             // dump($session->get('result'));
+            return $this->redirectToRoute('show_data');
         }
 
         return $this->render('stock_analysis/index.html.twig', [
